@@ -41,7 +41,7 @@ export async function completeTodo(id) {
     const response = await client
         .from('todos')
         .update({ complete: true })
-        .math({ user_id: client.auth.user().id, id: id });
+        .match({ user_id: client.auth.user().id, id: id });
     // once you have a response from supabase, comment this back in:
     // return checkError(response);
 }
